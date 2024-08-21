@@ -56,24 +56,25 @@ namespace SimpleRestaurant1.Models
             }   
 
         }
-        public object Inspect(object order)
+        public string Inspect(object order)
         {
             if (order is EggOrder)
             {
                 EggOrder eggOrder = (EggOrder)order;
+                int? quality = eggOrder.GetQuality();
 
-                if (eggOrder.GetQuality() is null)
+                if (quality is null)
                 {
                     return "Employee forgot the quality";
                 }
-                else { return eggOrder.GetQuality(); }
+                else { return quality.ToString(); }
                 
             }
             else if (order is ChickenOrder)
             {
                 return "No inspection required on chicken";
             }
-            else { throw new ArgumentNullException(); }     // if order is null - there were'nt any requests yet
+            else { throw new Exception("There weren't any requests yet"); }     // if order is null - there were'nt any requests yet
 
         }
         public object CopyRequest() 
@@ -88,7 +89,7 @@ namespace SimpleRestaurant1.Models
                 ChickenOrder chickenOrder = (ChickenOrder)_order;
                 return chickenOrder;
             }
-            else { throw new ArgumentNullException(); }     // if order is null - there were'nt any requests yet
+            else { throw new Exception("There weren't any requests yet"); }     // if order is null - there weren't any requests yet
 
         }
 
@@ -122,7 +123,7 @@ namespace SimpleRestaurant1.Models
 
                 return "Chicken order is ready!";
             }
-            else { throw new ArgumentNullException(); }     // if order is null - there were'nt any requests yet
+            else { throw new Exception("There weren't any requests yet"); }     // if order is null - there were'nt any requests yet
         }
 
     }

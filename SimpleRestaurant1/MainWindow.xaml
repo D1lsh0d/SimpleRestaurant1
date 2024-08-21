@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimpleRestaurant1"
         mc:Ignorable="d"
-        Title="Los Pollos Hermanos" Height="500" Width="350">
+        Title="Los Pollos Hermanos" Height="500" Width="370">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
@@ -17,11 +17,10 @@
 
         </Grid.RowDefinitions>
         <GroupBox  
-              VerticalAlignment="Top" 
               Width="150"
               Height="50"
               Padding="5"
-              Margin="20,10,180,0"
+              Margin="20 0 180 0"
               Name="menuGroupBox"
               Header="Menu"
               Grid.Row="0">
@@ -30,39 +29,48 @@
                 <RadioButton Name="eggRadioButton" Content="Egg" Margin="10, 3"/>
             </StackPanel>
         </GroupBox>
-        <Label Grid.Row="1" Padding="20, 0, 5, 5">Quantity:</Label>
+        <Image Grid.Row="0"
+               Width="100"
+               Height="100"
+               Margin="200 0 40 0"
+               Source="los-pollos-hermanos.png"/>
+        <Label Grid.Row="1" Padding="20 0 5 5">Quantity:</Label>
         <TextBox 
             Name="quantityInput"
             Width="50" 
             Height="20"
             ToolTip="Input order quantity"
-            VerticalAlignment="Center"
             Grid.Row="1" 
-            Margin="78,0,272,0"
+            Margin="-150 0 0 0"
             />
         <Button 
             Name="submitButton"
             Grid.Row="1"
             Content="Submit new request"
-            Margin="170 0 20 0"
+            Margin="170 0 20 0" Click="submitButton_Click"
             />
         <Button 
             Name="copytButton"
             Grid.Row="2"
             Content="Copy the previus request"
-            Margin="20, 10, 20, 0"/>
+            Margin="20, 10, 20, 0" Click="copytButton_Click"/>
         <Label Grid.Row="3" Padding="20, 10, 0, 0">Egg quality:</Label>
         <Label Name="eggQualityLabel" Grid.Row="3" Padding="90, 10, 5, 5">0</Label>
         <Button 
             Name="prepareButton"
             Grid.Row="4"
             Content="Prepare food"
-            Margin="20, 10, 20, 0"/>
+            Margin="20, 10, 20, 0" Click="prepareButton_Click"/>
         <Label Content="Results:" Grid.Row="5"  Padding="20, 10, 0, 0"/>
-        <TextBlock
-            Name="resultsTextBlock"
+        <ScrollViewer
             Margin="20 30 20 20"
-            Grid.Row="5"
-            />
+            Grid.Row="5">
+            <TextBlock
+                Name="resultsTextBlock"
+                TextWrapping="Wrap">      
+            </TextBlock>
+        </ScrollViewer>
+        
+        
     </Grid>
 </Window>

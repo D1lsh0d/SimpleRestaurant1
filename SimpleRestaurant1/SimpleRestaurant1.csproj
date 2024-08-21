@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="los-pollos-hermanos.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="los-pollos-hermanos.png" />
+  </ItemGroup>
+
 </Project>
