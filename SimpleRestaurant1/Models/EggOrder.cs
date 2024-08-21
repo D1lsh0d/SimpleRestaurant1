@@ -11,6 +11,10 @@ namespace SimpleRestaurant1.Models
         private int _quantity;
         private int? _quality = null;
         private int _callCount = 0;
+        private bool _cooked;
+        private int rottenEggsCount = 0;
+        public int RottenEggsCount { get => rottenEggsCount; }
+
         public EggOrder(int quantity)
         {
             if (quantity <= 0)
@@ -42,6 +46,7 @@ namespace SimpleRestaurant1.Models
         {
             if (GetQuality() < 25)
             {
+                rottenEggsCount++;
                 throw new Exception("Rotten egg");
             }
         }
@@ -53,11 +58,12 @@ namespace SimpleRestaurant1.Models
 
         public void Cook()
         {
-            for (int i = 0; i < _quantity; i++) 
-            { 
-                Crack();
-                DiscardShell();
+            if (_cooked)
+            {
+                throw new Exception("The order was already cooked");
             }
+
+            _cooked = true;
         }
 
     }

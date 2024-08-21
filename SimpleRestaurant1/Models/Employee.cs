@@ -19,7 +19,7 @@ namespace SimpleRestaurant1.Models
         {
             _requestsCount++;
 
-            // simulating employee forgetnnig 1/3 of the time
+            // simulating employee forgetting 1/3 of the time
             if (_requestsCount % 3 == 0) 
             {
                 // reversing switch
@@ -92,9 +92,37 @@ namespace SimpleRestaurant1.Models
 
         }
 
-        public void PrepareFood()
+        public string PrepareFood()
         {
+            if (_order is EggOrder)
+            {
+                EggOrder eggOrder = (EggOrder)_order;
 
+                for (int i = 0; i < eggOrder.GetQuantity(); i++)
+                {
+                    eggOrder.Crack();
+                    eggOrder.DiscardShell();
+                }
+
+                eggOrder.Cook();
+
+                return "The eggs have just been cooked, " 
+                    + eggOrder.RottenEggsCount.ToString() + " rotten eggs were found";
+            }
+            else if (_order is ChickenOrder)
+            {
+                ChickenOrder chickenOrder = (ChickenOrder)_order;
+
+                for (int i = 0; i < chickenOrder.GetQuantity(); i++)
+                {
+                    chickenOrder.CutUp(); 
+                }
+
+                chickenOrder.Cook();
+
+                return "Chicken order is ready!";
+            }
+            else { throw new ArgumentNullException(); }     // if order is null - there were'nt any requests yet
         }
 
     }

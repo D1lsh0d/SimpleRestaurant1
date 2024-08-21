@@ -10,7 +10,6 @@ namespace SimpleRestaurant1.Models
     {
         private int _quantity;
         private bool _cooked;
-        private int _cutUpCount;
 
         public ChickenOrder(int quantity)
         {
@@ -26,18 +25,13 @@ namespace SimpleRestaurant1.Models
 
         public void CutUp()
         {
-            if (_cutUpCount >= _quantity)
-            {
-                throw new Exception("Chickens ran out");
-            }
 
-            _cutUpCount++;
         }
         public void Cook()
         {
             if (_cooked)
             {
-                throw new Exception("The chicken was already cooked");
+                throw new Exception("The order was already cooked");
             }
 
             _cooked = true;
