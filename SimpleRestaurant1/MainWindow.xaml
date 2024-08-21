@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimpleRestaurant1"
         mc:Ignorable="d"
-        Title="Los Pollos Hermanos" Height="500" Width="370">
+
+        Title="Los Pollos Hermanos" Height="500" Width="370" Icon="/los-pollos-hermanos.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="150"></RowDefinition>
